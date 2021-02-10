@@ -1,1 +1,1 @@
-This is a work on soil indetification based on the images uploaded.
+This is a work on soil idetification based on the images uploaded.
