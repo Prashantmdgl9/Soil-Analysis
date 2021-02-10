@@ -4,7 +4,6 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 import numpy as np
 from PIL import Image
 import base64
-import pandas as pd
 
 classes = {0:"Alluvial",1:"Black",2:"Clay",3:"Red"}
 
@@ -53,8 +52,8 @@ def about():
     " helping those who must live on the ground?“")
     st.header("      "+ "                   - A Young Oxfam Poster")
 
-    st.subheader("This is a preliminary work to classify soils based on the images that are uploaded by the user. A convolutional Neural Network has been trained to identify"
-     " the type of soil. Such work can find application in remote sensing and automatic classification of the land areas based on soil type.")
+    st.subheader("This is a preliminary work to classify soils based on the images that are uploaded by the user. A Convolutional Neural Network has been trained on sample images to identify"
+     " the types of soil. Such work can find application in remote sensing and automatic classification of the land areas based on soil type.")
     st.subheader("Presently, the soils are classified into 4 categories viz. Alluvial, Black, Red, or Clay. Based on the classification of the soil, suggestions are made on the type of crops"
     " that can be grown there. ")
 
