@@ -44,7 +44,7 @@ def homepage():
 
 
 def about():
-    set_png_as_page_bg(datapath+'mud3.png')
+    set_png_as_page_bg(datapath+'mud4.jpg')
     st.title("A fistful of soil")
     st.header("“And somewhere there are engineers"
     " Helping others fly faster than sound."
@@ -82,7 +82,7 @@ def set_png_as_page_bg(png_file):
 
 
 def identify():
-    set_png_as_page_bg(datapath+'identify.jpg')
+    set_png_as_page_bg(datapath+'identify2.jpg')
     soil_model = load_model('models/soil_model2.h5')
     st.set_option('deprecation.showfileUploaderEncoding', False)
     st.subheader("Choose a soil image file that you extracted from the work site or field")
