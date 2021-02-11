@@ -12,6 +12,7 @@ suggestions = {"Alluvial": "Rice, Wheat, Sugarcane, Maize, Cotton, Soyabean, Jut
 
 datapath = "snapshot/"
 
+
 def main():
 
     page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
@@ -42,7 +43,6 @@ def homepage():
     st.image(image, use_column_width = True)
 
 
-
 def about():
     set_png_as_page_bg(datapath+'mud3.png')
     st.title("A fistful of soil")
@@ -59,7 +59,7 @@ def about():
 
     st.subheader("This is version 1 of the product, there will be further improvements.")
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -71,13 +71,14 @@ def set_png_as_page_bg(png_file):
     <style>
     body {
     background-image: url("data:image/png;base64,%s");
-    background-size: cover;
+    background-size: 2200px;
+    background-repeat: no-repeat;
     }
     </style>
     ''' % bin_str
 
     st.markdown(page_bg_img, unsafe_allow_html=True)
-    return
+
 
 
 def identify():
