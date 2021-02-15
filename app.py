@@ -7,8 +7,8 @@ import base64
 
 classes = {0:"Alluvial",1:"Black",2:"Clay",3:"Red"}
 
-suggestions = {"Alluvial": "Wheat, Rice, Sugarcane, Tobacco, Cotton, Jute, Legumes", "Black" : "Cotton, Citrus fruits, Jowar, Millets, Castor, Wheat",
-"Clay" : "Kale, Lettuce, Chard, Broccoli, Cabbage, Beans", "Red" : "Peanuts, Grams, Maize, Soybean, Banana, Mango"}
+suggestions = {"Alluvial": "Tomatoes, Sage, Roses, Butterfly bush, Ferns, Daffodils, Lavender", "Black" : "Citrus fruits, Sunflower, Legumes, Microgreens, Peppers",
+"Clay" : "Kale, Lettuce, Broccoli, Cabbage, Aster, Daylily, Magnolia, Juniper, Pine, Geranium, Ivy", "Red" : "Peanuts, Grams, Potatoes, Sweet potato, Banana, Papaya"}
 
 datapath = "snapshot/"
 
