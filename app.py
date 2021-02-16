@@ -10,12 +10,54 @@ classes = {0:"Alluvial",1:"Black",2:"Clay",3:"Red"}
 suggestions = {"Alluvial": "Tomatoes, Sage, Roses, Butterfly bush, Ferns, Daffodils, Lavender", "Black" : "Citrus fruits, Sunflower, Legumes, Microgreens, Peppers",
 "Clay" : "Kale, Lettuce, Broccoli, Cabbage, Aster, Daylily, Magnolia, Juniper, Pine, Geranium, Ivy", "Red" : "Peanuts, Grams, Potatoes, Sweet potato, Banana, Papaya"}
 
+
+
+healthType = ['Scab',
+ 'Rot',
+ 'Rust',
+ 'Healthy',
+ 'Healthy',
+ 'Powdery mildew',
+ 'Healthy',
+ 'Leaf spot',
+ 'Common_rust',
+ 'Northern Leaf Blight',
+ 'Healthy',
+ 'Black rot',
+ 'Black Measles',
+ 'Leaf blight',
+ 'Healthy',
+ 'Citrus greening',
+ 'Bacterial spot',
+ 'Healthy',
+ 'Bacterial spot',
+ 'Healthy',
+ 'Early blight',
+ 'Late blight',
+ 'Healthy',
+ 'Healthy',
+ 'Healthy',
+ 'Powdery mildew',
+ 'Leaf_scorch',
+ 'healthy',
+ 'Bacterial spot',
+ 'Early blight',
+ 'Late blight',
+ 'Leaf Mold',
+ 'Leaf spot',
+ 'Spider mite',
+ 'Target Spot',
+ 'Yellow Leaf',
+ 'Mosaic virus',
+ 'Healthy']
+
+
 datapath = "snapshot/"
 
 
 def main():
 
-    page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify"])
+    page = st.sidebar.selectbox("App Selections", ["Homepage", "About", "Identify", "Plant_Health"])
     if page == "Identify":
         st.title("Soil Identifier")
         identify()
@@ -23,6 +65,29 @@ def main():
         homepage()
     elif page == "About":
         about()
+    elif page == "Plant_Health":
+        health()
+
+
+
+def health():
+    st.title("Check the health of your plant")
+    set_png_as_page_bg(datapath+'identify3.jpg')
+    leaf_model = load_model('models/leaf-model.h5')
+    st.set_option('deprecation.showfileUploaderEncoding', True)
+    st.subheader("Choose an image of a leaf that you want to check, please take photograph of only single leaf")
+    uploaded_file = st.file_uploader("Upload an image", type = "jpg")
+    if uploaded_file is not None:
+        image = Image.open(uploaded_file)
+        st.image(image, use_column_width=True)
+        st.write("")
+        name = "temp1.jpg"
+
+        image.save(datapath+name)
+
+        result = model_predict(datapath+name, leaf_model)
+        pred = healthType[result]
+        st.header("The state of your leaf is - "+ pred )
 
 
 def homepage():
@@ -80,7 +145,6 @@ def set_png_as_page_bg(png_file):
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
-
 def identify():
     set_png_as_page_bg(datapath+'identify2.jpg')
     soil_model = load_model('models/soil_model2.h5')
@@ -103,8 +167,6 @@ def identify():
 
 
 
-
-
 def model_predict(image_path,model):
 
     image = load_img(image_path,target_size=(224,224))
@@ -114,9 +176,6 @@ def model_predict(image_path,model):
 
     result = np.argmax(model.predict(image))
     return result
-
-
-
 
 
 if __name__ == '__main__':
